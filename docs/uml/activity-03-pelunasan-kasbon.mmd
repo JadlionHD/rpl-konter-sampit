@@ -1,0 +1,20 @@
+flowchart TD
+    Mulai((Mulai)) --> BukaBukuKasbon[Kasir membuka daftar Buku Kasbon]
+    BukaBukuKasbon --> CariPelanggan[Kasir mencari nama pelanggan berhutang]
+    CariPelanggan --> CekStatus{Status kasbon?}
+    
+    CekStatus -- Sudah Lunas --> TampilInfoLunas[Sistem tampilkan riwayat:\n'Sudah Dilunasi']
+    TampilInfoLunas --> Selesai((Selesai))
+    
+    CekStatus -- Belum Lunas --> KlikTandaiLunas[Kasir klik tombol 'Tandai Lunas']
+    KlikTandaiLunas --> DialogKonfirmasi[Sistem tampilkan dialog konfirmasi penerimaan uang]
+    DialogKonfirmasi --> KonfirmasiBayar{Uang tunai\nditerima?}
+    
+    KonfirmasiBayar -- Batal / Belum --> BatalBayar[Kasir batalkan proses]
+    BatalBayar --> Selesai
+    
+    KonfirmasiBayar -- Ya --> UpdateStatus[Sistem ubah status kasbon menjadi 'Lunas']
+    UpdateStatus --> CatatWaktuLunas[Sistem catat tanggal & jam pelunasan]
+    CatatWaktuLunas --> TambahKasMasuk[Sistem tambahkan nominal pelunasan ke kas laci hari ini]
+    TambahKasMasuk --> NotifikasiLunas[Sistem tampilkan pesan: 'Kasbon berhasil dilunasi']
+    NotifikasiLunas --> Selesai

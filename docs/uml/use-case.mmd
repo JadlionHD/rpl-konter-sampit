@@ -1,0 +1,33 @@
+flowchart LR
+    %% Definisi Aktor
+    Kasir[["👤 Aktor: Penjaga Konter (Kasir)"]]
+    Pemilik[["👤 Aktor: Pemilik Konter (Admin)"]]
+
+    %% Batas Sistem
+    subgraph SistemKonter["Sistem Manajemen RPL Konter Sampit"]
+        UC01(["UC-01: Catat Transaksi Pulsa & Data"])
+        UC02(["UC-02: Kelola Stok & Voucher Fisik"])
+        UC03(["UC-03: Kelola Kasbon Pelanggan"])
+        UC04(["UC-04: Lihat Rekapitulasi Laba & Omzet"])
+        UC05(["UC-05: Autentikasi Login Pengguna"])
+        UC06(["UC-06: Deteksi Otomatis Operator"])
+        UC07(["UC-07: Peringatan Voucher Expired"])
+        UC08(["UC-08: Salin Teks Struk Transaksi"])
+    end
+
+    %% Asosiasi Kasir
+    Kasir --- UC01
+    Kasir --- UC03
+    Kasir --- UC05
+
+    %% Asosiasi Pemilik
+    Pemilik --- UC01
+    Pemilik --- UC02
+    Pemilik --- UC03
+    Pemilik --- UC04
+    Pemilik --- UC05
+
+    %% Hubungan Include & Extend
+    UC01 -.->|include| UC06
+    UC08 -.->|extend| UC01
+    UC07 -.->|extend| UC02

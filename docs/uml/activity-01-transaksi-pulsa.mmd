@@ -1,0 +1,22 @@
+flowchart TD
+    Mulai((Mulai)) --> BukaForm[Kasir membuka formulir transaksi]
+    BukaForm --> InputNomor[Kasir menginput nomor HP pembeli]
+    InputNomor --> ValidasiNomor{Nomor valid?\n≥10 digit?}
+    
+    ValidasiNomor -- Tidak --> PesanErrorNomor[Sistem tampilkan pesan:\n'Nomor HP tidak valid']
+    PesanErrorNomor --> InputNomor
+    
+    ValidasiNomor -- Ya --> DeteksiOpr[Sistem deteksi otomatis operator dari prefix]
+    DeteksiOpr --> PilihProduk[Kasir memilih nominal pulsa atau paket data]
+    PilihProduk --> TampilHarga[Sistem tampilkan harga modal & harga jual]
+    TampilHarga --> PilihMetode[Kasir memilih metode pembayaran]
+    
+    PilihMetode --> CekMetode{Metode Bayar?}
+    CekMetode -- Tunai / QRIS --> SimpanTrx[Sistem simpan transaksi berstatus 'Lunas']
+    CekMetode -- Kasbon --> InputKasbon[Kasir isi nama pelanggan & tanggal tempo]
+    InputKasbon --> SimpanKasbon[Sistem simpan transaksi berstatus 'Kasbon'\nke buku piutang]
+    
+    SimpanTrx --> UpdateRekap[Sistem perbarui rekap kas hari ini]
+    SimpanKasbon --> UpdateRekap
+    UpdateRekap --> NotifikasiSukses[Sistem tampilkan pesan sukses simpan]
+    NotifikasiSukses --> Selesai((Selesai))

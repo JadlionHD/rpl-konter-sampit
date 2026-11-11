@@ -1,0 +1,18 @@
+flowchart TD
+    Mulai((Mulai)) --> BukaInventaris[Kasir memilih menu Voucher Fisik]
+    BukaInventaris --> PilihVoucher[Kasir memilih jenis paket voucher fisik]
+    PilihVoucher --> CekExpired{Tanggal expired\nsudah lewat?}
+    
+    CekExpired -- Ya --> BlokirExpired[Sistem tampilkan badge 'Expired'\n& blokir penjualan]
+    BlokirExpired --> SelesaiGagal((Selesai))
+    
+    CekExpired -- Tidak --> CekStok{Sisa stok > 0?}
+    CekStok -- Tidak --> TampilStokHabis[Sistem tampilkan pesan:\n'Stok voucher habis!']
+    TampilStokHabis --> PilihVoucher
+    
+    CekStok -- Ya --> InputJumlah[Kasir menginput jumlah voucher yang dibeli]
+    InputJumlah --> KonfirmasiJual[Kasir menekan tombol 'Simpan Penjualan']
+    KonfirmasiJual --> PotongStok[Sistem kurangi stok voucher sesuai jumlah]
+    PotongStok --> CatatTransaksi[Sistem simpan catatan transaksi penjualan]
+    CatatTransaksi --> TampilSukses[Sistem tampilkan konfirmasi transaksi sukses]
+    TampilSukses --> SelesaiSukses((Selesai))
