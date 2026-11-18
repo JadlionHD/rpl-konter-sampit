@@ -17,9 +17,11 @@
 | 7 | `KF-07` | Pelunasan kasbon pelanggan (bisa dicicil atau lunas sekaligus) serta pencatatan tanggal lunas. | **Must** | **Sprint 2** | Menjaga riwayat aliran kas masuk dari tagihan piutang lama. |
 | 8 | `KF-08` | Autentikasi login multi-peran: Pemilik Konter (akses penuh) dan Penjaga Konter (transaksi & kasbon saja). | **Must** | **Sprint 2** | Pemilik ingin menyembunyikan data laba bersih dan modal akumulasi dari penjaga shift. |
 | 9 | `KF-09` | Peringatan dini voucher fisik mendekati tanggal kedaluwarsa (≤ 7 hari sebelum expired). | **Should** | **Sprint 3** | Menghindari kerugian akibat voucher hangus sebelum sempat terjual ke pelanggan. |
-| 10 | `KF-10` | Filter riwayat transaksi berdasarkan operator dan rentang tanggal tertentu. | **Should** | **Sprint 3** | Memudahkan audit jika ada komplain pelanggan atau selisih setoran vendor. |
-| 11 | `KF-11` | Cetak nota transaksi termal (Bluetooth/USB printer 58mm) atau salin teks struk untuk dikirim via WhatsApp. | **Could** | — | Nilai tambah jika pelanggan meminta bukti pembayaran token PLN atau pulsa besar. |
-| 12 | `KF-12` | Ekspor rekapitulasi laporan bulanan ke format file CSV/Excel. | **Could** | — | Dikerjakan bila ada sisa waktu pada Sprint 3. |
+| 10 | `KF-10` | Formulir penambahan dan pembaruan stok voucher fisik (nama paket, jumlah, harga modal, harga jual, tanggal expired) + ledger `voucher_masuk`. | **Should** | **Sprint 2** | Menjadi prasyarat operasional KF-03/KF-04 dan sumber data CRUD voucher; ledger memberi jejak audit stok. |
+| 11 | `KF-11` | Filter riwayat transaksi berdasarkan operator dan rentang tanggal tertentu. | **Should** | **Sprint 3** | Memudahkan audit jika ada komplain pelanggan atau selisih setoran vendor. |
+| 12 | `KF-12` | Salin teks struk transaksi untuk dikirim via WhatsApp. | **Could** | **Sprint 3** | Nilai tambah bila pelanggan meminta bukti pembayaran token PLN atau pulsa besar. |
+
+> Catatan: ekspor CSV/Excel tidak termasuk kebutuhan pada SRS, sehingga tidak dikerjakan pada v1.0. ID KF mengikuti `docs/srs.md` (KF-10 = stok voucher, KF-11 = filter, KF-12 = salin struk).
 
 ---
 
@@ -30,14 +32,17 @@ Tugas Sprint 1 dirancang kecil dan spesifik (maksimal 1 hari kerja per tugas) un
 | ID Tugas | Mengacu ke | Uraian Tugas Teknis | Penanggung Jawab | Estimasi | Status |
 |:---:|:---:|:---|:---:|:---:|:---:|
 | `TSK-101` | Fondasi | Inisialisasi struktur folder Bun + Hono, konfig SQLite via `bun:sqlite`, dan file skema awal `src/db.ts`. | SM / Dev | 0.5 hari | Selesai |
-| `TSK-102` | `KF-02` | Buat modul fungsi `detectOperator(phone: string)` untuk deteksi otomatis prefix nomor HP. | Dev | 0.5 hari | Siap |
-| `TSK-103` | `KF-02` | Tulis unit test untuk validasi nomor HP dan operator di `src/index.test.ts`. | QA / Dev | 0.5 hari | Siap |
-| `TSK-104` | `KF-01` | Buat halaman beranda formulir cepat penjualan pulsa (input nomor, nominal, modal, jual). | Dev | 1 hari | Siap |
-| `TSK-105` | `KF-01` | Buat endpoint POST `/api/transaksi` untuk menyimpan penjualan pulsa langsung ke database. | Dev | 1 hari | Siap |
-| `TSK-106` | `KF-03` | Buat tabel database `vouchers` (kode, nama_paket, operator, stok, harga_beli, harga_jual, expired_date). | Dev | 0.5 hari | Siap |
-| `TSK-107` | `KF-03` | Logika pengurangan stok voucher saat transaksi jenis fisik berhasil dicatat. | Dev | 0.5 hari | Siap |
-| `TSK-108` | `KF-04` | Validasi penolakan jika stok voucher = 0 dengan pesan error `"Stok voucher habis!"`. | Dev | 0.5 hari | Siap |
-| `TSK-109` | DoD | Jalankan uji regresi `bun test` dan review Pull Request Sprint 1. | Tim | 0.5 hari | Siap |
+| `TSK-102` | `KF-02` | Buat modul fungsi `detectOperator(phone: string)` untuk deteksi otomatis prefix nomor HP. | Dev | 0.5 hari | Selesai |
+| `TSK-103` | `KF-02` | Tulis unit test untuk validasi nomor HP dan operator di `src/index.test.ts`. | QA / Dev | 0.5 hari | Selesai |
+| `TSK-104` | `KF-01` | Buat halaman beranda formulir cepat penjualan pulsa (input nomor, nominal, modal, jual). | Dev | 1 hari | Selesai |
+| `TSK-105` | `KF-01` | Buat endpoint POST `/api/transaksi` untuk menyimpan penjualan pulsa langsung ke database. | Dev | 1 hari | Selesai |
+| `TSK-106` | `KF-03` | Buat tabel database `vouchers` (kode, nama_paket, operator, stok, harga_beli, harga_jual, expired_date). | Dev | 0.5 hari | Selesai |
+| `TSK-107` | `KF-03` | Logika pengurangan stok voucher saat transaksi jenis fisik berhasil dicatat. | Dev | 0.5 hari | Selesai |
+| `TSK-108` | `KF-04` | Validasi penolakan jika stok voucher = 0 dengan pesan error `"Stok voucher habis!"`. | Dev | 0.5 hari | Selesai |
+| `TSK-109` | DoD | Jalankan uji regresi `bun test` dan review Pull Request Sprint 1. | Tim | 0.5 hari | Selesai |
+| `TSK-110` | `KF-10` | Tambah tabel `voucher_masuk` dan model daftar dengan JOIN ke `vouchers`. | Dev | 0.5 hari | Siap |
+| `TSK-111` | `KF-10` | Form voucher masuk: pilihan induk, validasi jumlah/tanggal, insert ledger + tambah stok dalam satu transaksi. | Dev | 1 hari | Siap |
+| `TSK-112` | `KF-11` | Pencarian dan filter riwayat transaksi (tanggal, operator, jenis, status) dengan query berparameter. | Dev | 1 hari | Siap |
 
 ---
 

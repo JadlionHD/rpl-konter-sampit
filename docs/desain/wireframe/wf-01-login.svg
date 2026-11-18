@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+<rect width="1440" height="900" fill="#ffffff"/>
+<rect x="6" y="6" width="1428" height="888" fill="none" stroke="#555" stroke-width="2"/>
+<rect x="0" y="0" width="1440" height="64" fill="#ededed"/>
+<line x1="0" y1="64" x2="1440" y2="64" stroke="#777" stroke-width="1.4"/>
+<text x="28" y="40" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="start" fill="#1f1f1f">RPL Konter Sampit</text>
+<rect x="450" y="180" width="540" height="470" rx="6" fill="#fff" stroke="#777" stroke-width="1.6"/>
+<text x="720" y="235" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#1f1f1f">Masuk ke Sistem</text>
+<text x="720" y="262" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="middle" fill="#666">Gunakan akun Pemilik atau Kasir</text>
+<text x="500" y="300" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" text-anchor="start" fill="#333">Nama pengguna</text><rect x="500" y="310" width="440" height="48" rx="4" fill="#fff" stroke="#999" stroke-width="1.3" stroke-dasharray="5 4"/><text x="512" y="341" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#888">contoh: hendra</text>
+<text x="500" y="390" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" text-anchor="start" fill="#333">Kata sandi</text><rect x="500" y="400" width="440" height="48" rx="4" fill="#fff" stroke="#999" stroke-width="1.3" stroke-dasharray="5 4"/><text x="512" y="431" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#888">••••••••</text>
+<rect x="500" y="490" width="440" height="52" rx="4" fill="#fafafa" stroke="#666" stroke-width="1.3" stroke-dasharray="7 5"/><text x="512" y="512" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start" fill="#555">Pesan galat</text><text x="512" y="532" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#333">Nama pengguna atau kata sandi salah.</text>
+<rect x="500" y="562" width="440" height="52" rx="4" fill="#d9d9d9" stroke="#444" stroke-width="1.6"/><text x="720" y="596" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="middle" fill="#222">Masuk</text>
+<circle cx="468" cy="205" r="15" fill="#fff" stroke="#222" stroke-width="1.6"/><text x="468" y="210" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle" fill="#222">1</text>
+<circle cx="468" cy="330" r="15" fill="#fff" stroke="#222" stroke-width="1.6"/><text x="468" y="335" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle" fill="#222">2</text>
+<circle cx="468" cy="420" r="15" fill="#fff" stroke="#222" stroke-width="1.6"/><text x="468" y="425" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle" fill="#222">3</text>
+<circle cx="468" cy="515" r="15" fill="#fff" stroke="#222" stroke-width="1.6"/><text x="468" y="520" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle" fill="#222">4</text>
+<circle cx="468" cy="590" r="15" fill="#fff" stroke="#222" stroke-width="1.6"/><text x="468" y="595" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle" fill="#222">5</text>
+<text x="720" y="640" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#666">Tidak ada akun? Hubungi pemilik untuk dibuatkan akun.</text>
+<line x1="24" y1="856" x2="1416" y2="856" stroke="#bbb"/>
+<text x="32" y="880" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#777">Wireframe low-fidelity — Jobsheet 7 — Login</text>
+<text x="1408" y="880" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end" fill="#777">RPL Konter Sampit</text>
+</svg>

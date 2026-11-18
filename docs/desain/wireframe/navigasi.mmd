@@ -1,0 +1,22 @@
+flowchart LR
+    L(["Login"]) --> B(["Beranda"])
+    B --> T(["Catat Transaksi"])
+    B --> J(["Jual Voucher"])
+    B --> V(["Inventaris Voucher"])
+    B --> K(["Buku Kasbon"])
+    B --> H(["Riwayat & Filter"])
+    V --> F(["Form Voucher (Pemilik)"])
+    V --> M(["Voucher Masuk (Pemilik)"])
+    B --> R(["Laporan (Pemilik)"])
+    F -.-> V
+    M -.-> V
+    T -.-> B
+    J -.-> B
+    K -.-> B
+    H -.-> B
+    R -.-> B
+    T -.-> X["403 (Kasir ke halaman Pemilik)"]
+    M -.-> X
+    R -.-> X
+    B -.-> O(["Keluar (POST)"])
+    O -.-> L

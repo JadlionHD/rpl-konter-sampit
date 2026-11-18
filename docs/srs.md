@@ -89,17 +89,17 @@ Setiap butir kebutuhan fungsional bernomor unik, terukur, berawalan *"Sistem har
 
 | ID User Story | Kebutuhan Fungsional (KF) | Kebutuhan Non-Fungsional (KNF) | Use Case Terkait (Jobsheet 5) | Rencana Uji (Minggu 13) |
 |:---:|:---|:---|:---:|:---|
-| `US-01` | `KF-01`, `KF-12` | `KNF-01`, `KNF-03` | `UC-01` (Catat Transaksi Pulsa) | `TC-TRX-01` |
-| `US-02` | `KF-02` | `KNF-03` | `UC-01` (Catat Transaksi Pulsa) | `TC-OPR-01` |
-| `US-03` | `KF-03` | `KNF-01` | `UC-02` (Kelola Stok Voucher) | `TC-STK-01` |
-| `US-04` | `KF-04` | `KNF-03` | `UC-02` (Kelola Stok Voucher) | `TC-STK-02` |
-| `US-05` | `KF-05` | `KNF-01` | `UC-04` (Lihat Rekapitulasi Laba) | `TC-RPT-01` |
-| `US-06` | `KF-06` | `KNF-01` | `UC-03` (Kelola Kasbon Pelanggan) | `TC-KSB-01` |
-| `US-07` | `KF-07` | `KNF-01` | `UC-03` (Kelola Kasbon Pelanggan) | `TC-KSB-02` |
-| `US-08` | `KF-09` | `KNF-01` | `UC-02` (Kelola Stok Voucher) | `TC-EXP-01` |
-| `US-09` | `KF-10` | `KNF-01` | `UC-02` (Kelola Stok Voucher) | `TC-STK-03` |
-| `US-10` | `KF-08` | `KNF-05` | `UC-05` (Autentikasi Login) | `TC-SEC-01` |
-| `US-11` | `KF-11` | `KNF-01` | `UC-01`, `UC-04` | `TC-FLT-01` |
+| `US-01` | `KF-01`, `KF-12` | `KNF-01`, `KNF-03` | `UC-01` (Catat Transaksi Pulsa) | `TC-TRX-01`…`TC-TRX-06`, `TC-RCP-01` |
+| `US-02` | `KF-02` | `KNF-03` | `UC-01` (Catat Transaksi Pulsa) | `TC-OPR-01`…`TC-OPR-05` |
+| `US-03` | `KF-03` | `KNF-01` | `UC-02` (Kelola Stok Voucher) | `TC-STK-01`, `TC-STK-03` |
+| `US-04` | `KF-04` | `KNF-03` | `UC-02` (Kelola Stok Voucher) | `TC-STK-02`, `TC-STK-04`, `TC-STK-05` |
+| `US-05` | `KF-05` | `KNF-01` | `UC-04` (Lihat Rekapitulasi Laba) | `TC-RPT-01`…`TC-RPT-03` |
+| `US-06` | `KF-06` | `KNF-01` | `UC-03` (Kelola Kasbon Pelanggan) | `TC-KSB-01`, `TC-KSB-04`, `TC-KSB-05` |
+| `US-07` | `KF-07` | `KNF-01` | `UC-03` (Kelola Kasbon Pelanggan) | `TC-KSB-02`, `TC-KSB-03` |
+| `US-08` | `KF-09` | `KNF-01` | `UC-02` (Kelola Stok Voucher) | `TC-EXP-01`…`TC-EXP-04` |
+| `US-09` | `KF-10` | `KNF-01` | `UC-02` (Kelola Stok Voucher) | `TC-VCR-01`…`TC-VCR-09`, `TC-VMS-01`…`TC-VMS-05` |
+| `US-10` | `KF-08` | `KNF-05` | `UC-05` (Autentikasi Login) | `TC-SEC-01`…`TC-SEC-12` |
+| `US-11` | `KF-11` | `KNF-01` | `UC-01`, `UC-04` | `TC-FLT-01`…`TC-FLT-06` |
 | `US-12` | — | `KNF-04` | Seluruh Halaman | `TC-UI-01` |
 
 ---

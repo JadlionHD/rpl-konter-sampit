@@ -1,0 +1,62 @@
+erDiagram
+    PENGGUNA |o--o{ TRANSAKSI : mencatat
+    PENGGUNA |o--o{ VOUCHER_MASUK : mencatat
+    VOUCHER |o--o{ TRANSAKSI : terjual_dalam
+    VOUCHER ||--o{ VOUCHER_MASUK : menerima_stok
+    PELANGGAN ||--o{ KASBON : memiliki
+    TRANSAKSI ||--o| KASBON : menimbulkan
+
+    PENGGUNA {
+        int id PK
+        text username UK
+        text password_hash
+        text peran
+        int aktif
+    }
+
+    VOUCHER {
+        int id PK
+        text nama_paket
+        text operator
+        int stok
+        int harga_modal
+        int harga_jual
+        text tanggal_expired
+    }
+
+    VOUCHER_MASUK {
+        int id PK
+        int voucher_id FK
+        int jumlah
+        text tanggal
+        int pengguna_id FK
+    }
+
+    PELANGGAN {
+        int id PK
+        text nama
+        text kontak
+    }
+
+    TRANSAKSI {
+        int id PK
+        text waktu
+        text jenis
+        text nomor_tujuan
+        text operator
+        int voucher_id FK
+        int jumlah
+        int harga_modal
+        int harga_jual
+        text metode_bayar
+        int pengguna_id FK
+    }
+
+    KASBON {
+        int id PK
+        int transaction_id FK
+        int pelanggan_id FK
+        text tanggal_tempo
+        text status
+        text tanggal_lunas
+    }

@@ -1,74 +1,72 @@
 # Kesepakatan Tim — rpl-konter-sampit
 
-> Dokumen ini disusun bersama oleh anggota kelompok sebagai pedoman kerja tim, alur kerja Git, penerapan Scrum, dan batasan penggunaan asisten AI dalam pengembangan proyek perangkat lunak.
+> Dokumen ini menjadi pedoman kerja, alur Git, penerapan Scrum, dan batasan penggunaan asisten AI. **Proyek dikerjakan secara individu oleh Hendra Gunawan.** Jobsheet menyarankan kelompok 2–3 orang; karena kondisi tim satu orang, item yang mensyaratkan peninjau pihak lain (review silang, PR reviewer, UAT) dikerjakan bersama dosen/teman sekelas dan dicatat apa adanya, bukan difabrikasi.
 
 ---
 
-## 1. Identitas Proyek dan Kelompok
+## 1. Identitas Proyek dan Peran
+
 - **Nama Proyek:** Sistem Manajemen Operasional Warung Konter Pulsa & Data (RPL Konter Sampit)
 - **Klien / Objek:** Warung Konter Pulsa & Data di Sampit, Kotawaringin Timur
-- **Anggota dan Peran Scrum:**
-  1. **Scrum Master:** [Nama Mahasiswa 1] (NIM: [NIM 1]) — Memfasilitasi alur kerja tim, memastikan kepatuhan Git, dan memoderasi rapat.
-  2. **Product Owner:** [Nama Mahasiswa 2] (NIM: [NIM 2]) — Mengelola prioritas Product Backlog, memastikan fitur menjawab kebutuhan klien, dan memvalidasi kriteria penerimaan.
-  3. **Developer / Quality Assurance:** [Nama Mahasiswa 3] (NIM: [NIM 3]) — Membangun komponen antarmuka, basis data, dan memverifikasi pengujian.
+- **Anggota:** **Hendra Gunawan** (NIM: 24554010026)
+- **Peran:** Scrum Master, Product Owner, Developer, dan QA dijalankan oleh satu orang dengan pemisahan tugas berdasarkan tahap pekerjaan (perencanaan → desain → implementasi → pengujian → rilis).
 
 ---
 
-## 2. Komunikasi Tim
-- **Kanal Utama:** Grup WhatsApp Kelompok dan Discord untuk diskusi sinkron / *pair programming*.
-- **Waktu Daily Scrum (15 Menit):** Setiap hari Senin dan Kamis pukul 19.30 WIB via Discord/WhatsApp Voice.
-- **Tiga Pertanyaan Standar Daily Scrum:**
-  1. Apa yang sudah saya selesaikan sejak pertemuan kemarin?
-  2. Apa yang akan saya kerjakan hari ini?
-  3. Kendala (*blocker*) apa yang saya hadapi?
-- **Batas Waktu Membalas Pesan:** Maksimal 3 jam pada hari kerja normal (08.00–21.00 WIB).
+## 2. Ritme Kerja
+
+- **Perencanaan:** setiap awal jobsheet, menetapkan satu fitur kecil dan kriteria penerimaan dari PRD.
+- **Eksekusi:** satu prompt = satu perubahan kecil; jalankan dan uji sebelum lanjut.
+- **Tinjauan:** membaca seluruh diff, memeriksa keamanan dasar, dan mencatat keputusan Terima/Ubah/Tolak di Jurnal Vibe Coding.
+- **Refleksi:** mengisi jurnal pada hari yang sama, bukan di akhir proyek.
+- **Batas waktu:** pekerjaan diselesaikan sebelum pertemuan berikutnya; tidak ada klaim kolaborasi yang tidak dilakukan.
 
 ---
 
-## 3. Aturan Kolaborasi Git & GitHub
-- **Dilarang keras push langsung ke branch `main`.** Semua perubahan wajib melalui branch fitur dan Pull Request (PR).
-- **Konvensi Penamaan Branch:**
-  - Dokumen: `docs-<nama-topik>` (contoh: `docs-srs`, `docs-uml`, `docs-backlog`)
-  - Fitur Baru: `fitur-<nama-fitur>` (contoh: `fitur-transaksi`, `fitur-stok-voucher`)
-  - Perbaikan Bug: `perbaikan-<nama-bug>` (contoh: `perbaikan-hitung-laba`)
-- **Aturan Pull Request:**
-  - Wajib menggunakan templat PR `.github/pull_request_template.md`.
-  - Minimal 1 anggota tim lain harus meninjau (*review*) dan memberikan komentar bermakna sebelum memberikan **Approve**.
-  - Author PR dilarang melakukan merge mandiri sebelum disetujui reviewer.
-- **Konvensi Pesan Commit:**
-  - Wajib diawali kata kerja aktif dan jelas: `"Tambah halaman transaksi"`, `"Perbaiki validasi kasbon"`, `"Perbarui tabel matriks keterlacakan SRS"`.
+## 3. Aturan Git & GitHub
+
+- **Dilarang push langsung ke `main`.** Semua perubahan melalui branch dan Pull Request.
+- **Konvensi branch:**
+  - Dokumen: `docs-<topik>` (contoh: `docs-antarmuka`)
+  - Fitur: `fitur/<nama-fitur>` (contoh: `fitur/crud-voucher`)
+  - Perbaikan: `perbaikan/<nama-bug>`
+  - Rilis: `rilis/v1.0.0`
+- **PR wajib memakai templat** `.github/pull_request_template.md` dan memuat ringkasan, cara menguji, serta bagian Penggunaan AI.
+- **Review:** karena tim satu orang, PR ditinjau sendiri dengan daftar periksa (self-review) dan, bila memungkinkan, diminta pemeriksaan tambahan dari dosen/teman. Komentar reviewer luar dicatat di `docs/desain/review/`.
+- **Pesan commit** diawali kata kerja aktif dan menjelaskan perubahan, contoh: “Tambah CRUD voucher dengan validasi stok” — bukan “update”.
 
 ---
 
-## 4. Aturan Penggunaan Asisten AI (*Vibe Coding Terkendali*)
-- **Pencatatan Wajib:** Setiap sesi generasi kode atau dokumen menggunakan asisten AI wajib dicatat dalam Jurnal *Vibe Coding* pribadi masing-masing anggota.
-- **Privasi Klien:** Dilarang menempelkan data pribadi nyata (nama asli, nomor telepon, alamat, atau saldo rekening asli narasumber) ke dalam prompt AI. Wajib menggunakan data anonim atau inisial.
-- **Keamanan:** Dilarang memasukkan kredensial, token akses, password, atau API key ke dalam prompt AI.
-- **Tinjau Sebelum Commit:** Kode atau dokumen hasil AI tidak boleh diterima mentah-mentah. Pengembang wajib meninjau baris demi baris, memastikan tidak ada paket siluman (*dependency bloat*), dan menguji kriteria penerimaan.
+## 4. Penggunaan Asisten AI (*Vibe Coding Terkendali*)
+
+- Setiap sesi yang memakai AI dicatat di `jurnal-vibe-coding.md`: tujuan, prompt ringkas, hasil, keputusan, dan alasan.
+- Dilarang menempelkan data pribadi klien, kata sandi, atau kunci rahasia ke prompt.
+- Kode/dokumen hasil AI wajib dibaca, diuji, dan dipahami sebelum di-commit.
+- AI tidak boleh menambah dependensi atau fitur di luar PRD/SRS tanpa persetujuan.
 
 ---
 
 ## 5. Definition of Done (DoD)
-Sebuah butir kebutuhan/fitur dinyatakan **Selesai (Done)** hanya bila:
-1. Kode/dokumen memenuhi seluruh *Acceptance Criteria* (Kriteria Penerimaan) yang tertulis di PRD/SRS.
-2. Lolos pengujian otomatis (`bun test`) tanpa kegagalan uji (*0 failures*).
-3. Kode bersih dari komentar uji coba (*debug*) dan tidak ada warning fatal.
-4. Perubahan diajukan via Pull Request, telah ditinjau dan di-approve oleh minimal 1 rekan tim.
-5. PR berhasil di-merge ke branch `main` tanpa konflik.
-6. Entri Jurnal *Vibe Coding* telah diperbarui oleh pengembang bersangkutan.
+
+1. Memenuhi seluruh kriteria penerimaan pada PRD/SRS.
+2. `bun test` lulus tanpa kegagalan; `bun run cek:skema` lulus.
+3. Tidak ada rahasia, data pribadi, atau `konter.sqlite` yang ikut di-commit.
+4. Perubahan melalui branch dan PR (self-review terdokumentasi).
+5. Jurnal Vibe Coding diperbarui.
+6. Dokumen terkait (kamus data, rencana uji, manual) ikut diperbarui bila perilaku berubah.
 
 ---
 
-## 6. Penanganan Masalah & Resolusi Konflik
-- **Anggota Tidak Responsif / Tidak Hadir:** Jika anggota tidak merespons dalam waktu 1x24 jam dan menghambat sprint, Scrum Master akan menghubungi langsung. Jika berlanjut 2x24 jam, porsi tugas akan diredistribusi dalam Sprint Planning darurat dan dilaporkan kepada dosen pengampu.
-- **Perbedaan Pendapat Teknis:** Didiskusikan bersama dengan merujuk pada keselarasan PRD dan kemudahan bagi klien. Jika suara berimbang, Product Owner memegang keputusan akhir terkait cakupan fungsional, dan Scrum Master memegang keputusan terkait standar teknis.
+## 6. Penanganan Masalah
+
+- **Pekerjaan terlambat:** kurangi cakupan fitur Could, bukan menunda pengujian.
+- **Konflik keputusan teknis:** kembali ke SRS/PRD; bila tetap ambigu, catat sebagai [Asumsi] dan tanyakan ke klien/dosen.
+- **Kesalahan:** dicatat di laporan cacat dan jurnal; riwayat Git tidak dihapus untuk menutupi kesalahan.
 
 ---
 
-## 7. Lembar Persetujuan
+## 7. Persetujuan
 
-| No | Nama Mahasiswa | NIM | Peran Scrum | Tanda Tangan Digital / Status | Tanggal Persetujuan |
+| No | Nama | NIM | Peran | Status | Tanggal |
 |:---|:---|:---|:---|:---|:---|
-| 1 | [Nama Mahasiswa 1] | [NIM 1] | Scrum Master | Disetujui (Approved) | 11 November 2026 |
-| 2 | [Nama Mahasiswa 2] | [NIM 2] | Product Owner | Disetujui (Approved) | 11 November 2026 |
-| 3 | [Nama Mahasiswa 3] | [NIM 3] | Developer / QA | Disetujui (Approved) | 11 November 2026 |
+| 1 | Hendra Gunawan | 24554010026 | Scrum Master / Product Owner / Developer / QA | Disetujui | 18 November 2026 |

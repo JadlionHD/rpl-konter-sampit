@@ -7,7 +7,12 @@
   "scripts": {
     "dev": "bun --watch src/index.ts",
     "start": "bun src/index.ts",
-    "test": "bun test"
+    "test": "bun test",
+    "cek:skema": "bun tests/cek_skema.ts",
+    "buat:pengguna": "bun scripts/buat-pengguna.ts",
+    "cadangkan": "bun scripts/cadangkan.ts",
+    "demo:siapkan": "bun scripts/siapkan-demo.ts",
+    "rekap:jurnal": "bun scripts/rekap-jurnal.ts"
   },
   "dependencies": {
     "hono": "^4.7.0"

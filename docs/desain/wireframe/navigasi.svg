@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+<defs><marker id="panah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#555"/></marker></defs>
+<rect width="1440" height="900" fill="#fff"/>
+<rect x="6" y="6" width="1428" height="888" fill="none" stroke="#555" stroke-width="2"/>
+<text x="32" y="54" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" text-anchor="start" fill="#1f1f1f">Peta Navigasi — RPL Konter Sampit</text>
+<text x="32" y="82" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#555">Garis penuh: perpindahan utama. Garis putus-putus: keluar. Halaman bertanda (Pemilik) memerlukan peran Pemilik.</text>
+<rect x="80" y="380" width="180" height="52" rx="6" fill="#f4f4f4" stroke="#555" stroke-width="1.5"/><text x="170" y="412" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#1f1f1f">Login</text>
+<rect x="300" y="380" width="180" height="52" rx="6" fill="#f4f4f4" stroke="#555" stroke-width="1.5"/><text x="390" y="412" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#1f1f1f">Beranda</text>
+<rect x="540" y="180" width="180" height="52" rx="6" fill="#f4f4f4" stroke="#555" stroke-width="1.5"/><text x="630" y="212" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#1f1f1f">Transaksi</text>
+<rect x="540" y="300" width="180" height="52" rx="6" fill="#f4f4f4" stroke="#555" stroke-width="1.5"/><text x="630" y="332" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#1f1f1f">Jual Voucher</text>
+<rect x="540" y="420" width="190" height="52" rx="6" fill="#f4f4f4" stroke="#555" stroke-width="1.5"/><text x="635" y="452" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#1f1f1f">Inventaris Voucher</text>
+<rect x="540" y="540" width="235" height="52" rx="6" fill="#f4f4f4" stroke="#555" stroke-width="1.5"/><text x="657.5" y="572" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#1f1f1f">Voucher Masuk (Pemilik)</text>
+<rect x="540" y="660" width="180" height="52" rx="6" fill="#f4f4f4" stroke="#555" stroke-width="1.5"/><text x="630" y="692" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#1f1f1f">Buku Kasbon</text>
+<rect x="900" y="180" width="180" height="52" rx="6" fill="#f4f4f4" stroke="#555" stroke-width="1.5"/><text x="990" y="212" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#1f1f1f">Riwayat &amp; Filter</text>
+<rect x="900" y="300" width="181" height="52" rx="6" fill="#f4f4f4" stroke="#555" stroke-width="1.5"/><text x="990.5" y="332" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#1f1f1f">Laporan (Pemilik)</text>
+<rect x="900" y="420" width="226" height="52" rx="6" fill="#f4f4f4" stroke="#555" stroke-width="1.5"/><text x="1013" y="452" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#1f1f1f">Form Voucher (Pemilik)</text>
+<rect x="900" y="540" width="180" height="52" rx="6" fill="#f4f4f4" stroke="#555" stroke-width="1.5"/><text x="990" y="572" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#1f1f1f">403</text>
+<line x1="260" y1="406" x2="300" y2="406" stroke="#555" stroke-width="1.6" marker-end="url(#panah)"/>
+<line x1="480" y1="380" x2="540" y2="206" stroke="#555" stroke-width="1.6" marker-end="url(#panah)"/>
+<line x1="480" y1="390" x2="540" y2="326" stroke="#555" stroke-width="1.6" marker-end="url(#panah)"/>
+<line x1="480" y1="406" x2="540" y2="446" stroke="#555" stroke-width="1.6" marker-end="url(#panah)"/>
+<line x1="480" y1="420" x2="540" y2="566" stroke="#555" stroke-width="1.6" marker-end="url(#panah)"/>
+<line x1="480" y1="430" x2="540" y2="686" stroke="#555" stroke-width="1.6" marker-end="url(#panah)"/>
+<line x1="480" y1="400" x2="900" y2="206" stroke="#555" stroke-width="1.6" marker-end="url(#panah)"/>
+<line x1="480" y1="390" x2="900" y2="326" stroke="#555" stroke-width="1.6" marker-end="url(#panah)"/>
+<line x1="720" y1="446" x2="900" y2="446" stroke="#555" stroke-width="1.6" marker-end="url(#panah)"/>
+<line x1="720" y1="566" x2="900" y2="566" stroke="#555" stroke-width="1.6" marker-end="url(#panah)"/>
+<line x1="720" y1="206" x2="900" y2="566" stroke="#555" stroke-width="1.6" marker-end="url(#panah)" stroke-dasharray="6 5"/>
+<line x1="720" y1="326" x2="900" y2="566" stroke="#555" stroke-width="1.6" marker-end="url(#panah)" stroke-dasharray="6 5"/>
+<line x1="720" y1="686" x2="900" y2="566" stroke="#555" stroke-width="1.6" marker-end="url(#panah)" stroke-dasharray="6 5"/>
+<line x1="80" y1="432" x2="80" y2="760" stroke="#555" stroke-width="1.6" marker-end="url(#panah)"/>
+<line x1="80" y1="760" x2="300" y2="432" stroke="#555" stroke-width="1.6" marker-end="url(#panah)" stroke-dasharray="6 5"/>
+<text x="84" y="790" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#666">Keluar (POST /logout) → Login</text>
+<text x="540" y="820" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#666">Semua halaman punya jalan kembali ke Beranda atau Login.</text>
+</svg>
