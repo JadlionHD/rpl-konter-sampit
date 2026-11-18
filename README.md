@@ -1,74 +1,178 @@
-# RPL Konter Sampit
+# RPL Konter Sampit v1.0.0
 
-> **Sistem Informasi & Manajemen Operasional Warung Konter Pulsa, Paket Data, & PPOB di Sampit**  
-> Proyek Praktikum Mata Kuliah Rekayasa Perangkat Lunak (3 SKS) — Semester 4  
-> Program Studi D3 Teknologi Informasi, Politeknik Sampit
+> Sistem Informasi & Manajemen Operasional Warung Konter Pulsa, Paket Data, & PPOB di Sampit.  
+> Proyek Praktikum Rekayasa Perangkat Lunak — Politeknik Sampit.  
+> Dikerjakan oleh **Hendra Gunawan** (24554010026).
 
----
+## Ringkasan
 
-## 👥 Tim Pengembang
+Aplikasi web lokal untuk mencatat transaksi pulsa/data/token, menjual voucher fisik, mengelola stok voucher, mencatat kasbon, dan melihat rekap laba. Autentikasi dua peran: **Pemilik** (akses penuh) dan **Kasir** (transaksi, voucher lihat, kasbon, riwayat hari ini).
 
-- **Anggota 1:** Hendra Gunawan - 24554010026
+Stack: **Bun + Hono + `bun:sqlite` + Hono JSX + `bun:test`**. Tidak memakai Flask/Python; keputusan stack didokumentasikan di `aturan-proyek.md` §1.
 
----
+## Prasyarat
 
-## 🎯 Gambaran Proyek
+- Windows/Linux/macOS dengan **Bun 1.4+** (`bun --version`).
+- Git (untuk alur branch/PR).
+- Peramban modern.
 
-Aplikasi web lokal responsif untuk warung konter pulsa di Kota Sampit guna mengatasi:
-
-1. Pencatatan transaksi penjualan pulsa, kuota data, voucher fisik, dan token listrik yang cepat.
-2. Manajemen inventaris ganda: barang fisik (kartu perdana, voucher) dan saldo digital.
-3. Peringatan dini voucher fisik mendekati tanggal kedaluwarsa (_expired alert_).
-4. Pencatatan piutang / kasbon pelanggan harian sekitar konter.
-5. Rekap laba kotor harian otomatis tanpa hitung manual buku tulis.
-
----
-
-## 🛠️ Stack Teknologi
-
-- **Runtime & Package Manager:** [Bun](https://bun.sh) (v1.4+)
-- **Web Framework:** [Hono](https://hono.dev) (v4+) dengan JSX/HTML rendering
-- **Database:** `bun:sqlite` (SQLite terintegrasi berkecepatan tinggi)
-- **Testing:** `bun test` bawaan
-- **Styling:** CSS modern ramah layar ponsel & laptop kasir
-
----
-
-## 🚀 Cara Menjalankan
-
-### 1. Prasyarat
-
-Pastikan komputer telah terpasang **Bun 1.0+** (`bun --version`).
-
-### 2. Instalasi Dependensi
+## Mulai Cepat
 
 ```bash
 bun install
-```
-
-### 3. Menjalankan Aplikasi (Mode Development)
-
-```bash
+copy .env.example .env        # Windows
+# cp .env.example .env        # Linux/macOS
+# Isi SECRET_KEY di .env (minimal 32 karakter acak).
+bun run buat:pengguna         # buat akun pemilik dan kasir
 bun dev
 ```
 
-Buka peramban pada alamat: `http://localhost:3000`
+Buka `http://localhost:3000`.
 
-### 4. Menjalankan Uji Otomatis
+### Data demo (opsional)
+
+```bash
+set DEMO_PEMILIK_PASSWORD=<pilih-sandi-demo>
+set DEMO_KASIR_PASSWORD=<pilih-sandi-demo-lain>
+set KONTER_DB=demo.sqlite
+bun run demo:siapkan
+bun dev
+```
+
+Tentukan kata sandi demo sendiri (minimal 8 karakter). Jangan memakai kata sandi contoh atau kata sandi nyata; `demo.sqlite` diabaikan Git.
+
+## Peran dan Menu
+
+| Menu/aksi | Kasir | Pemilik |
+|---|:---:|:---:|
+| Beranda | ✓ (tanpa modal/laba) | ✓ |
+| Catat transaksi pulsa/data/token | ✓ | ✓ |
+| Jual voucher | ✓ | ✓ |
+| Daftar voucher | ✓ (lihat) | ✓ |
+| Tambah/ubah/hapus/stok voucher | 403 | ✓ |
+| Voucher masuk | 403 | ✓ |
+| Kasbon & pelunasan | ✓ | ✓ |
+| Riwayat | hari ini | semua + filter |
+| Laporan | 403 | ✓ |
+
+## Perintah
+
+| Perintah | Kegunaan |
+|---|---|
+| `bun dev` | Server pengembangan dengan watch |
+| `bun start` | Server tanpa watch |
+| `bun test` | Uji otomatis (DB in-memory) |
+| `bun run cek:skema` | Uji DDL dan batasan skema |
+| `bun run buat:pengguna` | Buat akun baru dari terminal (kata sandi tidak ditampilkan) |
+| `bun run demo:siapkan` | Isi akun/transaksi demo (butuh env kata sandi) |
+| `bun run cadangkan` | Buat cadangan SQLite di `backup/` |
+| `bunx tsc --noEmit` | Pemeriksaan tipe (memerlukan TypeScript) |
+
+## Konfigurasi
+
+Salin `.env.example` ke `.env`.
+
+| Variabel | Wajib | Keterangan |
+|---|:---:|---|
+| `SECRET_KEY` | Produksi | Minimal 32 karakter acak; dipakai untuk cookie sesi/CSRF. Di dev boleh kosong (secret acak sementara). |
+| `APP_ENV` | Tidak | `development` (default) atau `production`. |
+| `KONTER_DB` | Tidak | Lokasi SQLite; default `konter.sqlite`. |
+| `PORT` | Tidak | Default 3000. |
+| `HOST` | Tidak | Default `127.0.0.1`; gunakan `0.0.0.0` untuk LAN. |
+| `COOKIE_SECURE` | Tidak | `1` hanya HTTPS; `0` untuk LAN HTTP. Default produksi `1`. |
+| `TRUST_PROXY` | Tidak | `1` hanya jika di belakang reverse proxy tepercaya; default `0` (header X-Forwarded-For diabaikan). |
+| `DEMO_PEMILIK_PASSWORD` / `DEMO_KASIR_PASSWORD` | Demo | Hanya untuk `demo:siapkan`, jangan dipakai produksi. |
+
+## Struktur
+
+```
+src/
+├── index.ts          # inisialisasi DB + server
+├── app.ts            # perakitan Hono, middleware, rute
+├── config.ts         # validasi konfigurasi/lingkungan
+├── middleware/       # sesi, peran, CSRF
+├── routes/           # controller HTTP
+├── services/         # aturan bisnis
+├── models/           # satu-satunya lapisan SQL
+├── views/            # Hono JSX
+├── db/               # koneksi, schema.sql, seed
+├── lib/              # waktu, sesi, CSRF, backup, format
+└── versi.ts
+public/               # style.css, app.js
+docs/                 # SRS, desain, pengujian, manual, UAT, Bab 4
+tests/                # bun:test + cek_skema.ts
+scripts/              # buat-pengguna, demo, cadangkan
+```
+
+`docs/desain/schema.sql` adalah satu-satunya sumber DDL. Jangan membuat `CREATE TABLE` di kode aplikasi.
+
+## Pengujian
 
 ```bash
 bun test
+bun run cek:skema
+bunx tsc --noEmit
 ```
 
----
+Seluruh uji memakai `:memory:` dan tidak menyentuh `konter.sqlite`. Rincian hasil ada di `docs/pengujian/test-case.md`.
 
-## 📂 Struktur Repositori & Dokumen
+## Cadangan dan Pemulihan
 
-- `PRD.md`: Ringkasan spesifikasi produk siap-AI (_Product Requirements Document_).
-- `aturan-proyek.md`: Panduan aturan teknis dan batasan arsitektur untuk asisten AI.
-- `docs/kesepakatan-tim.md`: Dokumen tata kelola tim, alur Git, Scrum, dan _Definition of Done_ (Jobsheet 2).
-- `docs/product-backlog.md`: Daftar backlog produk terencana Sprint 1–3 (Jobsheet 2 & 4).
-- `docs/elisitasi/`: Hasil wawancara elisitasi, pedoman, catatan fakta/asumsi, dan 12+ User Story (Jobsheet 3).
-- `docs/srs.md`: Dokumen formal _Software Requirements Specification_ ringkas (Jobsheet 4 & 5).
-- `docs/uml/`: Diagram Use Case, Skenario Use Case, dan Activity Diagrams (Jobsheet 5).
-- `src/`: Kode sumber aplikasi web Hono + SQLite.
+Membuat cadangan (aplikasi boleh berjalan):
+
+```bash
+bun run cadangkan
+# hasil: backup/konter-YYYY-MM-DD-HH-MM-SS.sqlite
+```
+
+Memulihkan:
+
+1. Hentikan aplikasi.
+2. Salin berkas cadangan ke lokasi `KONTER_DB`.
+3. Hapus `konter.sqlite-wal` dan `konter.sqlite-shm` bila ada.
+4. Jalankan aplikasi, lalu periksa `/kesehatan` dan data.
+
+## Deployment (LAN/Komputer Toko)
+
+1. Di komputer toko, buat `.env`:
+   ```env
+   APP_ENV=production
+   SECRET_KEY=<64 karakter acak>
+   KONTER_DB=D:\data\konter.sqlite
+   PORT=3000
+   HOST=0.0.0.0
+   COOKIE_SECURE=0   # LAN HTTP; gunakan 1 bila HTTPS
+   ```
+2. Jalankan `bun start`.
+3. Izinkan port 3000 di firewall Windows.
+4. Buka `http://<IP-komputer>:3000` dari perangkat lain.
+5. Jadwalkan `bun run cadangkan` harian dan simpan cadangan di lokasi terpisah.
+6. Untuk internet, gunakan HTTPS/reverse proxy dan `COOKIE_SECURE=1`.
+
+Detail ada di `docs/deployment.md`. Aplikasi tidak memakai server pengembangan Flask/Waitress; server produksi adalah Bun. Verifikasi dari komputer lain dan UAT tetap merupakan langkah manual.
+
+## Keamanan
+
+- Kata sandi Argon2id (`Bun.password`), bukan teks asli.
+- Sesi cookie bertanda tangan, `HttpOnly`, `SameSite=Lax`.
+- CSRF token pada semua POST; rate limit login 5 gagal/15 menit.
+- CSP `'self'`, tanpa `unsafe-inline`; CSS/JS eksternal.
+- Peran diperiksa di server pada GET dan POST, bukan hanya menu.
+- Jangan commit `.env`, `konter.sqlite`, atau `backup/`.
+
+## Dokumentasi
+
+- `PRD.md`, `docs/srs.md`, `docs/uml/`
+- `docs/desain/` (ERD, kamus data, normalisasi, schema, arsitektur, wireframe)
+- `docs/pengujian/` (rencana uji, test case, laporan cacat, rencana UAT)
+- `docs/manual-pengguna.md`
+- `docs/temuan-keamanan.md`, `docs/laporan-temuan.md`
+- `CHANGELOG.md`
+- `jurnal-vibe-coding.md`
+
+## Keterbatasan v1.0
+
+- KF-12 salin struk WhatsApp belum dikerjakan (Could).
+- UAT dengan klien belum dilaksanakan; rencana tersedia, hasil harus diisi jujur.
+- Rate limit in-memory (hilang saat restart) dan aplikasi ditujukan untuk satu instance.
+- Peer review/PR review oleh pihak lain bergantung pada sesi kelas; proyek dikerjakan individu.
